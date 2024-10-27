@@ -1,0 +1,23 @@
+1.1 
+(1): pwd
+(2): cd music (if you aren’t already in it), ls. It will show you these 2 files: patterns.txt and symmetry.py
+(3): cat or nano
+(4): cat
+(5): diff	patterns.txt symmetry.txt
+(6): mv patterns.txt ~/math/calculus/
+(7): rm ~/math/geometry/triangle.txt
+(8): cd ../math
+(9): git init 
+(10): git remote add master
+(11): cp ~/music/symmetry.txt ~/math/ 
+(12): git status. It will only track symmetry.txt if you git add 
+(13): for ONLY symmetry.txt: git add symmetry.txt. For ALL: git add .
+(14): yes git is tracking it because it is in the staging area
+(15): git commit -m “adding to local repository” 
+(16): git push origin master. You should be pushing to the main branch because its the primary branch.
+(17): git branch appplied_math
+(18): git checkout applied_math
+(19): git add physics/, git commit -m “adding to remote”, git push origin applied-math. If you didn’t commit before switching, none of the changes you made would be added
+(20): git branch. The one highlighted in green is the branch you are currently working on
+(21): git checkout main
+(22): git merge applied-math
