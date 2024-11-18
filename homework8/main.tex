@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[letterpaper,portrait,margin=1in]{geometry}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{hyperref}
+\usepackage{parskip}
+
+
+\title{Doctor, is this Normal? \\\large ULAB, Division of Sincerely Serious Science}
+\author{Sarah Jauregui}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+According to my sources, around May 2021 an image began circulating around the internet about a broken
+sidewalk. The image, which can be seen in \autoref{Figure 1}, claims that the sidewalk crack resembles the form
+of a normal distribution. This lab report will test that claim by fitting this curve with a normal standard
+distribution (also called a Gaussian distribution).
+
+\begin{figure}[h!]        
+    \centering
+    \includegraphics[width=0.8\textwidth]{img.jpg}
+    \caption{Sidewalk image from the internet}
+    \label{Figure 1} 
+\end{figure}
+
+\section{Methods}
+\subsection{Preprocessing}
+First, we used the Perspective Wrap tool in Photoshop to correct the titled perspective of the image. Then,
+we worked with the \texttt{Python Imaging Library} and \texttt{NumPy} [1] and converted our image to grayscale.
+
+A threshold mask was applied to the image so that only dark pixels would be retained. Note that some
+minimal manual processing was required to remove the vertical sidewalk crack as well as outlier pixels.
+
+Finally, the location of the dark pixels are recorded as coordinates in a Cartesian plane
+\subsection{Curve Fitting}
+We worked with \texttt{SciPy} [2] to fit a normal distribution,
+\begin{equation}
+f(x)=a\cdot e^{-\frac{1}{2}\frac{(x-\mu)^2}{\sigma}}
+\end{equation}
+where a is a scaling constant, $\mu$ is the mean and $\sigma$ is the standard deviation.
+
+\section{Results}
+After our data analysis, \autoref{Figure 2} reveals that a normal distribution fits our data well.
+\begin{figure}[h!]        
+    \centering
+    \includegraphics[width=0.8\textwidth]{fit.png}
+    \caption{Top: original image, Middle: processed image with perspective correction and greyscale transformation, Bottom: curve fit of the sidewalk crack points.}
+    \label{Figure 2} 
+\end{figure}
+
+Furthermore, we determined the fit to have a reduced chi-squared value,
+\begin{equation}
+\chi_\nu^2=\frac{1}{\nu}\sum\frac{(O-E)^2}{E}=0.22
+\end{equation}
+where $\nu$ is the number of degrees of freedom. Of note, we used the Pearson chi-squared definition because it
+is difficult to estimate the uncertainty of our points.
+
+The reduced chi-squares is less than 1 and quite small. Therefore, our model is likely correct but that the
+data is slightly over fitted. Regardless, we have shown that the crack is well-described by a normal curve!
+
+\bibliographystyle{ieeetr}
+\bibliography{ref.bib}
+\nocite{*}
+
+
+\end{document}
